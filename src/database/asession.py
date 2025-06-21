@@ -27,7 +27,7 @@ class DatabaseSessionManager:
                 "statement_cache_size": 0,
                 "prepared_statement_cache_size": 0,
             },
-            echo=True if settings.ENVIRONMENT == "development" else False,
+            # echo=True if settings.ENVIRONMENT == "development" else False,
         )
 
         self.session_maker = async_sessionmaker(
@@ -49,6 +49,10 @@ class DatabaseSessionManager:
             await conn.execute(text("CREATE EXTENSION IF NOT EXISTS pgcrypto;"))
             await conn.execute(text("CREATE EXTENSION IF NOT EXISTS unaccent;"))
             await conn.run_sync(Base.metadata.create_all)
+
+    async def drop_all(self):
+        async with self.engine.begin() as conn:
+            await conn.run_sync(Base.metadata.drop_all)
 
     @asynccontextmanager
     async def get_session(self) -> AsyncGenerator[AsyncSession, None]:

@@ -3,18 +3,15 @@ from typing import Any, Dict, Optional, Literal
 from enum import Enum
 
 from pydantic import BaseModel, Field
-from jose import JWTError, jwt  # type: ignore
-from passlib.context import CryptContext
+from jose import JWTError, jwt
+import bcrypt
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+import secrets
 
 from src.database import Filter
 from src.database.models import TokenBlacklist
-
 from src.core.config import settings
-import secrets
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 class TokenType(str, Enum):
@@ -59,7 +56,9 @@ class AuthService:
         Returns:
             True if the password is correct, False otherwise.
         """
-        return pwd_context.verify(plain_password, hashed_password)
+        return bcrypt.checkpw(
+            plain_password.encode("utf-8"), hashed_password.encode("utf-8")
+        )
 
     @staticmethod
     def get_password_hash(password: str) -> str:
@@ -72,7 +71,7 @@ class AuthService:
         Returns:
             The hash of the password.
         """
-        return pwd_context.hash(password)
+        return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
     @staticmethod
     def create_access_token(

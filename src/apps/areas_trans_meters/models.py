@@ -1,7 +1,8 @@
 from typing import List, Optional, TYPE_CHECKING
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, Text, ForeignKey
 from uuid import UUID as PyUUID
+
+from sqlalchemy import String, Text, ForeignKey, UniqueConstraint
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 if TYPE_CHECKING:
     from src.apps.data.models import Reading
@@ -22,7 +23,7 @@ from src.apps.areas_trans_meters.schemas import (
 class Meter(Base[MeterCreate, MeterUpdate]):
     __tablename__ = f"{settings.API_NAME.lower()}__meters"
 
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     description: Mapped[str] = mapped_column(Text, nullable=False)
 
     transformer_id: Mapped[PyUUID] = mapped_column(
@@ -40,7 +41,7 @@ class Meter(Base[MeterCreate, MeterUpdate]):
 class Transformer(Base[TransformerCreate, TransformerUpdate]):
     __tablename__ = f"{settings.API_NAME.lower()}__transformers"
 
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     description: Mapped[str] = mapped_column(Text, nullable=False)
 
     coverage_area_id: Mapped[PyUUID] = mapped_column(
@@ -59,9 +60,16 @@ class Transformer(Base[TransformerCreate, TransformerUpdate]):
         "Reading", back_populates="transformer", cascade="all, delete-orphan"
     )
 
+    @property
+    def num_meters(self) -> int:
+        return len(self.meters)
+
 
 class CoverageArea(Base[CoverageAreaCreate, CoverageAreaUpdate]):
     __tablename__ = f"{settings.API_NAME.lower()}__coverage_areas"
+    __table_args__ = (
+        UniqueConstraint("type", "name", name="uq_coverage_area_type_name"),
+    )
 
     type: Mapped[CoverageAreaType] = mapped_column(String(15), nullable=False)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
@@ -82,3 +90,11 @@ class CoverageArea(Base[CoverageAreaCreate, CoverageAreaUpdate]):
     transformers: Mapped[List["Transformer"]] = relationship(
         "Transformer", back_populates="coverage_area", cascade="all, delete-orphan"
     )
+
+    @property
+    def num_transformers(self) -> int:
+        return len(self.transformers)
+
+    @property
+    def num_meters(self) -> int:
+        return sum(len(transformer.meters) for transformer in self.transformers)

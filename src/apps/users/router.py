@@ -1,9 +1,10 @@
 from datetime import datetime
 from typing import Dict, Literal, Optional, List
-from datetime import timezone, datetime
+from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query, Request
 from sqlalchemy.ext.asyncio import AsyncSession
+import sqlalchemy.exc
 
 from src.database import aget_db
 from src.database.models import TokenBlacklist as TokenBlacklistDB
@@ -11,12 +12,13 @@ from src.database.schemas import TokenBlacklist
 from src.database.pagination import PageParams, PaginatedResponse
 from src.core.auth import AuthService, TokenPair, AccessToken
 from src.core.dependencies import get_current_user, CurrentUser
+from src.core.dependencies import get_current_user_refresh, get_page_params
 from src.core.query_parser import parse_filters, build_search_filters
 from .models import User as UserDB
 from .schemas import LoginRequest, AccessTokenRefreshRequest, User, UserCreate, UserType
 from src.database import Filter
 
-router = APIRouter(prefix="/auth", tags=["authentication"])
+router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
 @router.get("/me", response_model=User)
@@ -27,7 +29,7 @@ async def current_user(current_user: CurrentUser = Depends(get_current_user)):
 @router.get("/users", response_model=PaginatedResponse[User])
 async def get_users(
     request: Request,
-    page_params: PageParams = Depends(),
+    page_params: PageParams = Depends(get_page_params),
     db: AsyncSession = Depends(aget_db),
     current_user: CurrentUser = Depends(get_current_user),
     search: Optional[str] = Query(
@@ -80,33 +82,49 @@ async def get_users(
     ]
     filters: List[Filter] = parse_filters(query_params, allowed_fields)
 
+    search_filters: List[Filter] = []
     if search:
-        filters.extend(
+        search_filters.extend(
             build_search_filters(search, ["email", "first_name", "last_name"])
         )
 
-    users = await UserDB.list(db, filters, page_params)
+    users = await UserDB.list(db, filters, search_filters, page_params)
     return PaginatedResponse[User](
-        items=[User.model_validate(user) for user in users.items],
+        items=[User.model_validate(user, from_attributes=True) for user in users.items],
         **users.model_dump(exclude={"items"}),
     )
 
 
 @router.post("/register", response_model=User)
 async def register(register_data: UserCreate, db: AsyncSession = Depends(aget_db)):
-    user = await UserDB.create(db, register_data)
+    hashed_key = AuthService.get_password_hash(register_data.key)
+    try:
+        user = await UserDB.create(
+            db,
+            {
+                **register_data.model_dump(exclude={"key", "key_confirm"}),
+                "hashed_key": hashed_key,
+            },
+        )
+    except sqlalchemy.exc.IntegrityError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="User already exists",
+        )
     return user
 
 
 @router.post("/login", response_model=TokenPair)
 async def login(login_data: LoginRequest, db: AsyncSession = Depends(aget_db)):
-    hashed_key = AuthService.get_password_hash(login_data.key)
     user = await UserDB.get_one_or_none(
         db,
-        Filter(field="hashed_key", operator="==", value=hashed_key),
+        Filter(field="email", operator="==", value=login_data.email),
     )
-    if not user:
-        raise HTTPException(status_code=401, detail="User not found")
+    if not user or not AuthService.verify_password(login_data.key, user.hashed_key):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials",
+        )
 
     return AuthService.create_token_pair(str(user.id))
 
@@ -124,10 +142,10 @@ async def refresh_access_token(
     response_model=Dict[Literal["message"], Literal["success"]],
 )
 async def logout_refresh(
-    current_user: CurrentUser = Depends(get_current_user),
+    current_user: CurrentUser = Depends(get_current_user_refresh),
     db: AsyncSession = Depends(aget_db),
 ):
-    if current_user.payload["token_type"] != "refresh":
+    if current_user.payload["type"] != "refresh":
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Invalid token type",
@@ -139,13 +157,12 @@ async def logout_refresh(
             jti=current_user.payload["jti"],
             token_type="refresh",
             user_id=current_user.db_user.id,
-            blacklisted_at=datetime.now(timezone.utc),
             expires_at=datetime.fromtimestamp(current_user.payload["exp"]),
         ),
         identifier="jti",
     )
 
-    return {"message": "Successfully logged out"}
+    return {"message": "success"}
 
 
 @router.post(
@@ -156,22 +173,15 @@ async def logout_access(
     current_user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(aget_db),
 ):
-    if current_user.payload["token_type"] != "access":
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid token type",
-        )
-
     await TokenBlacklistDB.get_or_create(
         db,
         obj_in=TokenBlacklist(
             jti=current_user.payload["jti"],
             token_type="access",
             user_id=current_user.db_user.id,
-            blacklisted_at=datetime.now(timezone.utc),
             expires_at=datetime.fromtimestamp(current_user.payload["exp"]),
         ),
         identifier="jti",
     )
 
-    return {"message": "Successfully logged out"}
+    return {"message": "success"}

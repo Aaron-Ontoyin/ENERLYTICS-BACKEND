@@ -8,5 +8,4 @@ class TokenBlacklist(BaseModel):
     jti: str
     token_type: str
     user_id: PyUUID
-    blacklisted_at: datetime
     expires_at: datetime

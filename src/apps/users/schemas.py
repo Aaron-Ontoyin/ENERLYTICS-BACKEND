@@ -1,8 +1,9 @@
 from typing import Optional
 from enum import Enum
 from datetime import datetime
+from uuid import UUID as PyUUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, model_validator
 
 
 class UserType(str, Enum):
@@ -11,7 +12,7 @@ class UserType(str, Enum):
 
 
 class UserBase(BaseModel):
-    email: str
+    email: EmailStr
     first_name: str
     last_name: str
     other_names: Optional[str] = None
@@ -21,6 +22,13 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     key: str
+    key_confirm: str
+
+    @model_validator(mode="after")
+    def check_keys_match(self):
+        if self.key != self.key_confirm:
+            raise ValueError("Keys do not match")
+        return self
 
 
 class UserUpdate(BaseModel):
@@ -33,12 +41,13 @@ class UserUpdate(BaseModel):
 
 
 class User(UserBase):
-    id: str
+    id: PyUUID
     created_at: datetime
     updated_at: datetime
 
 
 class LoginRequest(BaseModel):
+    email: EmailStr
     key: str
 
 

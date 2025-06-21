@@ -40,14 +40,6 @@
         "documentation": {}
     },
     {
-        "label": "selectinload",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
         "label": "Mapped",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -112,6 +104,14 @@
         "documentation": {}
     },
     {
+        "label": "selectinload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "String",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -152,7 +152,7 @@
         "documentation": {}
     },
     {
-        "label": "select",
+        "label": "UniqueConstraint",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -192,6 +192,14 @@
         "documentation": {}
     },
     {
+        "label": "text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Index",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -201,6 +209,22 @@
     },
     {
         "label": "Enum",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "CheckConstraint",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "PrimaryKeyConstraint",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -272,6 +296,14 @@
         "documentation": {}
     },
     {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Select",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -328,7 +360,7 @@
         "documentation": {}
     },
     {
-        "label": "PageParams",
+        "label": "PaginatedResponse",
         "importPath": "src.database",
         "description": "src.database",
         "isExtraImport": true,
@@ -336,7 +368,7 @@
         "documentation": {}
     },
     {
-        "label": "PaginatedResponse",
+        "label": "PageParams",
         "importPath": "src.database",
         "description": "src.database",
         "isExtraImport": true,
@@ -456,6 +488,46 @@
         "documentation": {}
     },
     {
+        "label": "Base",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "aget_db",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "asession_manager",
+        "importPath": "src.database",
+        "description": "src.database",
+        "isExtraImport": true,
+        "detail": "src.database",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "src.core.config",
+        "description": "src.core.config",
+        "isExtraImport": true,
+        "detail": "src.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "src.core.config",
+        "description": "src.core.config",
+        "isExtraImport": true,
+        "detail": "src.core.config",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "src.core.config",
         "description": "src.core.config",
@@ -513,6 +585,22 @@
     },
     {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -577,6 +665,30 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -713,6 +825,14 @@
     },
     {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -784,6 +904,14 @@
         "documentation": {}
     },
     {
+        "label": "Literal",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Generic",
         "importPath": "typing",
         "description": "typing",
@@ -793,14 +921,6 @@
     },
     {
         "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Literal",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -825,6 +945,14 @@
     },
     {
         "label": "TypeVar",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -880,6 +1008,38 @@
         "documentation": {}
     },
     {
+        "label": "AsyncGenerator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Generator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
         "label": "UUID",
         "importPath": "uuid",
         "description": "uuid",
@@ -905,6 +1065,14 @@
     },
     {
         "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
         "importPath": "uuid",
         "description": "uuid",
         "isExtraImport": true,
@@ -1200,6 +1368,30 @@
         "documentation": {}
     },
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncSession",
+        "importPath": "sqlalchemy.ext.asyncio",
+        "description": "sqlalchemy.ext.asyncio",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.asyncio",
+        "documentation": {}
+    },
+    {
         "label": "AsyncSession",
         "importPath": "sqlalchemy.ext.asyncio",
         "description": "sqlalchemy.ext.asyncio",
@@ -1296,6 +1488,71 @@
         "documentation": {}
     },
     {
+        "label": "AsyncSession",
+        "importPath": "sqlalchemy.ext.asyncio",
+        "description": "sqlalchemy.ext.asyncio",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "create_async_engine",
+        "importPath": "sqlalchemy.ext.asyncio",
+        "description": "sqlalchemy.ext.asyncio",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "async_sessionmaker",
+        "importPath": "sqlalchemy.ext.asyncio",
+        "description": "sqlalchemy.ext.asyncio",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy.exc",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "MissingGreenlet",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
         "label": "get_current_user",
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
@@ -1312,15 +1569,7 @@
         "documentation": {}
     },
     {
-        "label": "get_current_user",
-        "importPath": "src.core.dependencies",
-        "description": "src.core.dependencies",
-        "isExtraImport": true,
-        "detail": "src.core.dependencies",
-        "documentation": {}
-    },
-    {
-        "label": "CurrentUser",
+        "label": "get_page_params",
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
         "isExtraImport": true,
@@ -1344,6 +1593,14 @@
         "documentation": {}
     },
     {
+        "label": "get_page_params",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
         "label": "get_current_user",
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
@@ -1353,6 +1610,46 @@
     },
     {
         "label": "CurrentUser",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_readings_page_params",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "CurrentUser",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user_refresh",
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "isExtraImport": true,
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_page_params",
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
         "isExtraImport": true,
@@ -1416,102 +1713,6 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "model_validator",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "Field",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "ConfigDict",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
         "label": "Enum",
         "importPath": "enum",
         "description": "enum",
@@ -1585,14 +1786,6 @@
     },
     {
         "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timezone",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -1648,7 +1841,7 @@
         "documentation": {}
     },
     {
-        "label": "timezone",
+        "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -1656,11 +1849,131 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigDict",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "model_validator",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "model_validator",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigDict",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigDict",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
         "documentation": {}
     },
     {
@@ -1720,27 +2033,43 @@
         "documentation": {}
     },
     {
-        "label": "ReadingCreate",
-        "importPath": "src.apps.data.schemas",
-        "description": "src.apps.data.schemas",
+        "label": "Sequence",
+        "importPath": "collections.abc",
+        "description": "collections.abc",
         "isExtraImport": true,
-        "detail": "src.apps.data.schemas",
+        "detail": "collections.abc",
         "documentation": {}
     },
     {
-        "label": "ReadingUpdate",
-        "importPath": "src.apps.data.schemas",
-        "description": "src.apps.data.schemas",
+        "label": "Sequence",
+        "importPath": "collections.abc",
+        "description": "collections.abc",
         "isExtraImport": true,
-        "detail": "src.apps.data.schemas",
+        "detail": "collections.abc",
         "documentation": {}
     },
     {
-        "label": "ReadingType",
-        "importPath": "src.apps.data.schemas",
-        "description": "src.apps.data.schemas",
+        "label": "UUID",
+        "importPath": "sqlalchemy.dialects.postgresql",
+        "description": "sqlalchemy.dialects.postgresql",
         "isExtraImport": true,
-        "detail": "src.apps.data.schemas",
+        "detail": "sqlalchemy.dialects.postgresql",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "sqlalchemy.dialects.postgresql",
+        "description": "sqlalchemy.dialects.postgresql",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects.postgresql",
+        "documentation": {}
+    },
+    {
+        "label": "SelectInloadT",
+        "importPath": "src.database.models",
+        "description": "src.database.models",
+        "isExtraImport": true,
+        "detail": "src.database.models",
         "documentation": {}
     },
     {
@@ -1784,6 +2113,30 @@
         "documentation": {}
     },
     {
+        "label": "ReadingCreate",
+        "importPath": "src.apps.data.schemas",
+        "description": "src.apps.data.schemas",
+        "isExtraImport": true,
+        "detail": "src.apps.data.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ReadingUpdate",
+        "importPath": "src.apps.data.schemas",
+        "description": "src.apps.data.schemas",
+        "isExtraImport": true,
+        "detail": "src.apps.data.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ReadingType",
+        "importPath": "src.apps.data.schemas",
+        "description": "src.apps.data.schemas",
+        "isExtraImport": true,
+        "detail": "src.apps.data.schemas",
+        "documentation": {}
+    },
+    {
         "label": "TokenBlacklist",
         "importPath": "src.database.schemas",
         "description": "src.database.schemas",
@@ -1801,6 +2154,14 @@
     },
     {
         "label": "PaginatedResponse",
+        "importPath": "src.database.pagination",
+        "description": "src.database.pagination",
+        "isExtraImport": true,
+        "detail": "src.database.pagination",
+        "documentation": {}
+    },
+    {
+        "label": "PageParams",
         "importPath": "src.database.pagination",
         "description": "src.database.pagination",
         "isExtraImport": true,
@@ -1872,11 +2233,12 @@
         "documentation": {}
     },
     {
-        "label": "CryptContext",
-        "importPath": "passlib.context",
-        "description": "passlib.context",
+        "label": "bcrypt",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "passlib.context",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "detail": "bcrypt",
         "documentation": {}
     },
     {
@@ -1954,22 +2316,6 @@
         "documentation": {}
     },
     {
-        "label": "NotFoundError",
-        "importPath": "core.exceptions",
-        "description": "core.exceptions",
-        "isExtraImport": true,
-        "detail": "core.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "NotFoundError",
-        "importPath": "core.exceptions",
-        "description": "core.exceptions",
-        "isExtraImport": true,
-        "detail": "core.exceptions",
-        "documentation": {}
-    },
-    {
         "label": "logging",
         "kind": 6,
         "isExtraImport": true,
@@ -1985,6 +2331,14 @@
         "importPath": "sys",
         "description": "sys",
         "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
         "documentation": {}
     },
     {
@@ -2036,11 +2390,125 @@
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "sqlalchemy.dialects.postgresql",
-        "description": "sqlalchemy.dialects.postgresql",
+        "label": "or_",
+        "importPath": "sqlalchemy.sql",
+        "description": "sqlalchemy.sql",
         "isExtraImport": true,
-        "detail": "sqlalchemy.dialects.postgresql",
+        "detail": "sqlalchemy.sql",
+        "documentation": {}
+    },
+    {
+        "label": "NotFoundError",
+        "importPath": "src.core.exceptions",
+        "description": "src.core.exceptions",
+        "isExtraImport": true,
+        "detail": "src.core.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncClient",
+        "importPath": "httpx",
+        "description": "httpx",
+        "isExtraImport": true,
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncClient",
+        "importPath": "httpx",
+        "description": "httpx",
+        "isExtraImport": true,
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "ASGITransport",
+        "importPath": "httpx",
+        "description": "httpx",
+        "isExtraImport": true,
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "UserType",
+        "importPath": "src.apps.users.schemas",
+        "description": "src.apps.users.schemas",
+        "isExtraImport": true,
+        "detail": "src.apps.users.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.apps.alerts.router",
+        "description": "src.apps.alerts.router",
+        "isExtraImport": true,
+        "detail": "src.apps.alerts.router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.apps.areas_trans_meters.router",
+        "description": "src.apps.areas_trans_meters.router",
+        "isExtraImport": true,
+        "detail": "src.apps.areas_trans_meters.router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.apps.data.router",
+        "description": "src.apps.data.router",
+        "isExtraImport": true,
+        "detail": "src.apps.data.router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "src.apps.users.router",
+        "description": "src.apps.users.router",
+        "isExtraImport": true,
+        "detail": "src.apps.users.router",
         "documentation": {}
     },
     {
@@ -2048,7 +2516,7 @@
         "kind": 6,
         "importPath": "src.apps.alerts.models",
         "description": "src.apps.alerts.models",
-        "peekOfCode": "class Alert(Base[AlertCreate, AlertUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__alerts\"\n    title: Mapped[str] = mapped_column(String(100), nullable=False)\n    message: Mapped[str] = mapped_column(Text, nullable=False)\n    status: Mapped[AlertStatus] = mapped_column(String(10), nullable=False)",
+        "peekOfCode": "class Alert(Base[AlertCreate, AlertUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__alerts\"\n    title: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)\n    message: Mapped[str] = mapped_column(Text, nullable=False)\n    status: Mapped[AlertStatus] = mapped_column(String(10), nullable=False)\n    def __repr__(self):\n        return f\"<Alert {self.title}>\"",
         "detail": "src.apps.alerts.models",
         "documentation": {}
     },
@@ -2057,7 +2525,7 @@
         "kind": 5,
         "importPath": "src.apps.alerts.router",
         "description": "src.apps.alerts.router",
-        "peekOfCode": "router = APIRouter(prefix=\"/alerts\", tags=[\"alerts\"])\n@router.get(\"/alerts/{alert_id}\", response_model=Alert)\nasync def get_alert(\n    alert_id: PyUUID,\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),\n):\n    return await AlertDB.get_by_id(db, alert_id)\n@router.get(\"/alerts\", response_model=PaginatedResponse[Alert])\nasync def get_alerts(",
+        "peekOfCode": "router = APIRouter(prefix=\"/alerts\", tags=[\"Alerts\"])\n@router.get(\"/{alert_id}\", response_model=Alert)\nasync def get_alert(\n    alert_id: PyUUID,\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),\n):\n    alert = await AlertDB.get_by_id(db, alert_id)\n    if not alert:\n        raise HTTPException(status_code=404, detail=\"Alert not found\")",
         "detail": "src.apps.alerts.router",
         "documentation": {}
     },
@@ -2084,7 +2552,7 @@
         "kind": 6,
         "importPath": "src.apps.alerts.schemas",
         "description": "src.apps.alerts.schemas",
-        "peekOfCode": "class AlertCreate(AlertBase): ...\nclass AlertUpdate(BaseModel):\n    title: str | None = None\n    message: str | None = None\n    status: AlertStatus | None = None\nclass Alert(AlertBase):\n    id: str\n    created_at: datetime\n    updated_at: datetime",
+        "peekOfCode": "class AlertCreate(AlertBase): ...\nclass AlertUpdate(BaseModel):\n    title: str | None = None\n    message: str | None = None\n    status: AlertStatus | None = None\nclass Alert(AlertBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime",
         "detail": "src.apps.alerts.schemas",
         "documentation": {}
     },
@@ -2093,7 +2561,7 @@
         "kind": 6,
         "importPath": "src.apps.alerts.schemas",
         "description": "src.apps.alerts.schemas",
-        "peekOfCode": "class AlertUpdate(BaseModel):\n    title: str | None = None\n    message: str | None = None\n    status: AlertStatus | None = None\nclass Alert(AlertBase):\n    id: str\n    created_at: datetime\n    updated_at: datetime",
+        "peekOfCode": "class AlertUpdate(BaseModel):\n    title: str | None = None\n    message: str | None = None\n    status: AlertStatus | None = None\nclass Alert(AlertBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime",
         "detail": "src.apps.alerts.schemas",
         "documentation": {}
     },
@@ -2102,7 +2570,7 @@
         "kind": 6,
         "importPath": "src.apps.alerts.schemas",
         "description": "src.apps.alerts.schemas",
-        "peekOfCode": "class Alert(AlertBase):\n    id: str\n    created_at: datetime\n    updated_at: datetime",
+        "peekOfCode": "class Alert(AlertBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime",
         "detail": "src.apps.alerts.schemas",
         "documentation": {}
     },
@@ -2111,7 +2579,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.models",
         "description": "src.apps.areas_trans_meters.models",
-        "peekOfCode": "class Meter(Base[MeterCreate, MeterUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__meters\"\n    name: Mapped[str] = mapped_column(String(100), nullable=False)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    transformer_id: Mapped[PyUUID] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__transformers.id\"), nullable=False\n    )\n    transformer: Mapped[\"Transformer\"] = relationship(\n        \"Transformer\", back_populates=\"meters\", remote_side=\"Transformer.id\"\n    )",
+        "peekOfCode": "class Meter(Base[MeterCreate, MeterUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__meters\"\n    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    transformer_id: Mapped[PyUUID] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__transformers.id\"), nullable=False\n    )\n    transformer: Mapped[\"Transformer\"] = relationship(\n        \"Transformer\", back_populates=\"meters\", remote_side=\"Transformer.id\"\n    )",
         "detail": "src.apps.areas_trans_meters.models",
         "documentation": {}
     },
@@ -2120,7 +2588,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.models",
         "description": "src.apps.areas_trans_meters.models",
-        "peekOfCode": "class Transformer(Base[TransformerCreate, TransformerUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__transformers\"\n    name: Mapped[str] = mapped_column(String(100), nullable=False)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    coverage_area_id: Mapped[PyUUID] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__coverage_areas.id\"), nullable=False\n    )\n    coverage_area: Mapped[\"CoverageArea\"] = relationship(\n        \"CoverageArea\", back_populates=\"transformers\", remote_side=\"CoverageArea.id\"\n    )",
+        "peekOfCode": "class Transformer(Base[TransformerCreate, TransformerUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__transformers\"\n    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    coverage_area_id: Mapped[PyUUID] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__coverage_areas.id\"), nullable=False\n    )\n    coverage_area: Mapped[\"CoverageArea\"] = relationship(\n        \"CoverageArea\", back_populates=\"transformers\", remote_side=\"CoverageArea.id\"\n    )",
         "detail": "src.apps.areas_trans_meters.models",
         "documentation": {}
     },
@@ -2129,7 +2597,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.models",
         "description": "src.apps.areas_trans_meters.models",
-        "peekOfCode": "class CoverageArea(Base[CoverageAreaCreate, CoverageAreaUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__coverage_areas\"\n    type: Mapped[CoverageAreaType] = mapped_column(String(15), nullable=False)\n    name: Mapped[str] = mapped_column(String(100), nullable=False)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    parent_id: Mapped[Optional[PyUUID]] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__coverage_areas.id\"), nullable=True\n    )\n    parent_area: Mapped[Optional[\"CoverageArea\"]] = relationship(\n        \"CoverageArea\", back_populates=\"sub_areas\", remote_side=\"CoverageArea.id\"",
+        "peekOfCode": "class CoverageArea(Base[CoverageAreaCreate, CoverageAreaUpdate]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__coverage_areas\"\n    __table_args__ = (\n        UniqueConstraint(\"type\", \"name\", name=\"uq_coverage_area_type_name\"),\n    )\n    type: Mapped[CoverageAreaType] = mapped_column(String(15), nullable=False)\n    name: Mapped[str] = mapped_column(String(100), nullable=False)\n    description: Mapped[str] = mapped_column(Text, nullable=False)\n    parent_id: Mapped[Optional[PyUUID]] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__coverage_areas.id\"), nullable=True",
         "detail": "src.apps.areas_trans_meters.models",
         "documentation": {}
     },
@@ -2138,7 +2606,7 @@
         "kind": 5,
         "importPath": "src.apps.areas_trans_meters.router",
         "description": "src.apps.areas_trans_meters.router",
-        "peekOfCode": "router = APIRouter(prefix=\"/arsenal\", tags=[\"Areas, Transformers, Meters\"])\n@router.get(\"/coverage-area/{id}\", response_model=CoverageArea)\nasync def get_coverage_area(\n    id: PyUUID = Path(..., description=\"The ID of the coverage area\"),\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),\n):\n    coverage_area = await CoverageAreaDB.get_by_id(db, id)\n    if not coverage_area:\n        raise HTTPException(",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/coverage-area/{id}\", response_model=CoverageArea, tags=[\"Coverage Areas\"])\nasync def get_coverage_area(\n    id: PyUUID = Path(..., description=\"The ID of the coverage area\"),\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),\n):\n    coverage_area = await CoverageAreaDB.get_by_id(\n        db, id, selectinloads=[(\"transformers\", \"meters\")]\n    )",
         "detail": "src.apps.areas_trans_meters.router",
         "documentation": {}
     },
@@ -2165,7 +2633,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class TransformerUpdate(BaseModel):\n    name: Optional[str] = None\n    description: Optional[str] = None\n    coverage_area_id: Optional[PyUUID] = None\nclass Transformer(TransformerBase):\n    id: PyUUID\n    num_meters: int\n    created_at: datetime\n    updated_at: datetime\n    class Config:",
+        "peekOfCode": "class TransformerUpdate(BaseModel):\n    name: Optional[str] = None\n    description: Optional[str] = None\n    coverage_area_id: Optional[PyUUID] = None\nclass Transformer(TransformerBase):\n    id: PyUUID\n    num_meters: int\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2174,7 +2642,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class Transformer(TransformerBase):\n    id: PyUUID\n    num_meters: int\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass MeterBase(BaseModel):\n    name: str\n    description: str",
+        "peekOfCode": "class Transformer(TransformerBase):\n    id: PyUUID\n    num_meters: int\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)\nclass MeterBase(BaseModel):\n    name: str\n    description: str\nclass MeterCreate(MeterBase):",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2183,7 +2651,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class MeterBase(BaseModel):\n    name: str\n    description: str\nclass MeterCreate(MeterBase):\n    coverage_area_id: PyUUID\nclass Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    class Config:",
+        "peekOfCode": "class MeterBase(BaseModel):\n    name: str\n    description: str\nclass MeterCreate(MeterBase):\n    transformer_id: PyUUID\nclass Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2192,7 +2660,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class MeterCreate(MeterBase):\n    coverage_area_id: PyUUID\nclass Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass MeterUpdate(BaseModel):\n    name: Optional[str] = None",
+        "peekOfCode": "class MeterCreate(MeterBase):\n    transformer_id: PyUUID\nclass Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)\nclass MeterUpdate(BaseModel):\n    name: Optional[str] = None\n    description: Optional[str] = None",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2201,7 +2669,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass MeterUpdate(BaseModel):\n    name: Optional[str] = None\n    description: Optional[str] = None\n    coverage_area_id: Optional[PyUUID] = None",
+        "peekOfCode": "class Meter(MeterBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)\nclass MeterUpdate(BaseModel):\n    name: Optional[str] = None\n    description: Optional[str] = None\n    coverage_area_id: Optional[PyUUID] = None\nclass CoverageAreaType(Enum):",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2228,7 +2696,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageAreaBase(BaseModel):\n    type: CoverageAreaType\n    name: str\n    description: str\n    num_transformers: int\n    num_meters: int\nclass CoverageAreaCreate(CoverageAreaBase):\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None",
+        "peekOfCode": "class CoverageAreaBase(BaseModel):\n    type: CoverageAreaType\n    name: str\n    description: str\nclass CoverageAreaCreate(CoverageAreaBase):\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None\n    name: Optional[str] = None\n    description: Optional[str] = None",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2237,7 +2705,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageAreaCreate(CoverageAreaBase):\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None\n    name: Optional[str] = None\n    description: Optional[str] = None\n    parent_id: Optional[PyUUID] = None\n    num_transformers: Optional[int] = None\n    num_meters: Optional[int] = None\nclass CoverageArea(CoverageAreaBase):",
+        "peekOfCode": "class CoverageAreaCreate(CoverageAreaBase):\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None\n    name: Optional[str] = None\n    description: Optional[str] = None\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaOut(CoverageAreaBase):\n    num_transformers: int\n    num_meters: int",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2246,7 +2714,16 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None\n    name: Optional[str] = None\n    description: Optional[str] = None\n    parent_id: Optional[PyUUID] = None\n    num_transformers: Optional[int] = None\n    num_meters: Optional[int] = None\nclass CoverageArea(CoverageAreaBase):\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None",
+        "peekOfCode": "class CoverageAreaUpdate(BaseModel):\n    type: Optional[CoverageAreaType] = None\n    name: Optional[str] = None\n    description: Optional[str] = None\n    parent_id: Optional[PyUUID] = None\nclass CoverageAreaOut(CoverageAreaBase):\n    num_transformers: int\n    num_meters: int\nclass CoverageArea(CoverageAreaOut):\n    id: PyUUID",
+        "detail": "src.apps.areas_trans_meters.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "CoverageAreaOut",
+        "kind": 6,
+        "importPath": "src.apps.areas_trans_meters.schemas",
+        "description": "src.apps.areas_trans_meters.schemas",
+        "peekOfCode": "class CoverageAreaOut(CoverageAreaBase):\n    num_transformers: int\n    num_meters: int\nclass CoverageArea(CoverageAreaOut):\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)\nclass CoverageAreaWithSubAreas(CoverageAreaOut):",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2255,7 +2732,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageArea(CoverageAreaBase):\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass CoverageAreaWithSubAreas(CoverageAreaBase):\n    \"\"\"Coverage area with nested sub-areas\"\"\"\n    id: PyUUID",
+        "peekOfCode": "class CoverageArea(CoverageAreaOut):\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)\nclass CoverageAreaWithSubAreas(CoverageAreaOut):\n    \"\"\"Coverage area with nested sub-areas\"\"\"\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2264,16 +2741,7 @@
         "kind": 6,
         "importPath": "src.apps.areas_trans_meters.schemas",
         "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageAreaWithSubAreas(CoverageAreaBase):\n    \"\"\"Coverage area with nested sub-areas\"\"\"\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    sub_areas: List[\"CoverageAreaWithSubAreas\"] = []\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nclass CoverageAreaWithParent(CoverageAreaBase):",
-        "detail": "src.apps.areas_trans_meters.schemas",
-        "documentation": {}
-    },
-    {
-        "label": "CoverageAreaWithParent",
-        "kind": 6,
-        "importPath": "src.apps.areas_trans_meters.schemas",
-        "description": "src.apps.areas_trans_meters.schemas",
-        "peekOfCode": "class CoverageAreaWithParent(CoverageAreaBase):\n    \"\"\"Coverage area with parent information\"\"\"\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    parent_area: Optional[\"CoverageArea\"] = None\n    created_at: datetime\n    updated_at: datetime\n    class Config:\n        from_attributes = True\nCoverageAreaWithSubAreas.model_rebuild()",
+        "peekOfCode": "class CoverageAreaWithSubAreas(CoverageAreaOut):\n    \"\"\"Coverage area with nested sub-areas\"\"\"\n    id: PyUUID\n    parent_id: Optional[PyUUID] = None\n    sub_areas: List[CoverageArea] = []\n    created_at: datetime\n    updated_at: datetime\n    model_config = ConfigDict(from_attributes=True)",
         "detail": "src.apps.areas_trans_meters.schemas",
         "documentation": {}
     },
@@ -2282,7 +2750,7 @@
         "kind": 6,
         "importPath": "src.apps.data.models",
         "description": "src.apps.data.models",
-        "peekOfCode": "class Reading(Base[ReadingCreate, ReadingUpdate]):\n    \"\"\"\n    Unified readings table for all measurement types.\n    Partitioned by timestamp for optimal time-series performance.\n    \"\"\"\n    __tablename__ = f\"{settings.API_NAME.lower()}__readings\"\n    meter_id: Mapped[Optional[PyUUID]] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__meters.id\"), nullable=True, index=True\n    )\n    transformer_id: Mapped[Optional[PyUUID]] = mapped_column(",
+        "peekOfCode": "class Reading(Base[ReadingCreate, ReadingUpdate]):\n    \"\"\"\n    Unified readings table for all measurement types.\n    Partitioned by timestamp for optimal time-series performance.\n    \"\"\"\n    __tablename__ = f\"{settings.API_NAME.lower()}__readings\"\n    id: Mapped[PyUUID] = mapped_column(PGUUID, default=uuid4)\n    meter_id: Mapped[Optional[PyUUID]] = mapped_column(\n        ForeignKey(f\"{settings.API_NAME.lower()}__meters.id\"), nullable=True, index=True\n    )",
         "detail": "src.apps.data.models",
         "documentation": {}
     },
@@ -2300,7 +2768,7 @@
         "kind": 5,
         "importPath": "src.apps.data.router",
         "description": "src.apps.data.router",
-        "peekOfCode": "router = APIRouter(prefix=\"/readings\", tags=[\"readings\"])\ndef get_unit_for_type(reading_type: ReadingType) -> Optional[str]:\n    \"\"\"Get the standard unit for each reading type\"\"\"\n    unit_map = {\n        ReadingType.CURRENT: \"A\",\n        ReadingType.VOLTAGE: \"V\",\n        ReadingType.POWER: \"W\",\n        ReadingType.POWER_FACTOR: None,\n        ReadingType.TEMPERATURE: \"°C\",\n        ReadingType.ENERGY_CONSUMPTION: \"kWh\",",
+        "peekOfCode": "router = APIRouter(prefix=\"/readings\", tags=[\"Readings\"])\ndef get_unit_for_type(reading_type: ReadingType) -> Optional[str]:\n    \"\"\"Get the standard unit for each reading type\"\"\"\n    unit_map = {\n        ReadingType.CURRENT: \"A\",\n        ReadingType.VOLTAGE: \"V\",\n        ReadingType.POWER: \"W\",\n        ReadingType.POWER_FACTOR: None,\n        ReadingType.TEMPERATURE: \"°C\",\n        ReadingType.ENERGY_CONSUMPTION: \"kWh\",",
         "detail": "src.apps.data.router",
         "documentation": {}
     },
@@ -2363,7 +2831,7 @@
         "kind": 5,
         "importPath": "src.apps.users.router",
         "description": "src.apps.users.router",
-        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"authentication\"])\n@router.get(\"/me\", response_model=User)\nasync def current_user(current_user: CurrentUser = Depends(get_current_user)):\n    return current_user.db_user\n@router.get(\"/users\", response_model=PaginatedResponse[User])\nasync def get_users(\n    request: Request,\n    page_params: PageParams = Depends(),\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),",
+        "peekOfCode": "router = APIRouter(prefix=\"/auth\", tags=[\"Authentication\"])\n@router.get(\"/me\", response_model=User)\nasync def current_user(current_user: CurrentUser = Depends(get_current_user)):\n    return current_user.db_user\n@router.get(\"/users\", response_model=PaginatedResponse[User])\nasync def get_users(\n    request: Request,\n    page_params: PageParams = Depends(get_page_params),\n    db: AsyncSession = Depends(aget_db),\n    current_user: CurrentUser = Depends(get_current_user),",
         "detail": "src.apps.users.router",
         "documentation": {}
     },
@@ -2372,7 +2840,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class UserType(str, Enum):\n    ADMIN = \"admin\"\n    USER = \"user\"\nclass UserBase(BaseModel):\n    email: str\n    first_name: str\n    last_name: str\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\n    type: Optional[UserType] = UserType.USER",
+        "peekOfCode": "class UserType(str, Enum):\n    ADMIN = \"admin\"\n    USER = \"user\"\nclass UserBase(BaseModel):\n    email: EmailStr\n    first_name: str\n    last_name: str\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\n    type: Optional[UserType] = UserType.USER",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2381,7 +2849,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class UserBase(BaseModel):\n    email: str\n    first_name: str\n    last_name: str\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\n    type: Optional[UserType] = UserType.USER\nclass UserCreate(UserBase):\n    key: str\nclass UserUpdate(BaseModel):",
+        "peekOfCode": "class UserBase(BaseModel):\n    email: EmailStr\n    first_name: str\n    last_name: str\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\n    type: Optional[UserType] = UserType.USER\nclass UserCreate(UserBase):\n    key: str\n    key_confirm: str",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2390,7 +2858,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class UserCreate(UserBase):\n    key: str\nclass UserUpdate(BaseModel):\n    email: Optional[str] = None\n    first_name: Optional[str] = None\n    last_name: Optional[str] = None\n    type: Optional[UserType] = None\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\nclass User(UserBase):",
+        "peekOfCode": "class UserCreate(UserBase):\n    key: str\n    key_confirm: str\n    @model_validator(mode=\"after\")\n    def check_keys_match(self):\n        if self.key != self.key_confirm:\n            raise ValueError(\"Keys do not match\")\n        return self\nclass UserUpdate(BaseModel):\n    email: Optional[str] = None",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2399,7 +2867,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class UserUpdate(BaseModel):\n    email: Optional[str] = None\n    first_name: Optional[str] = None\n    last_name: Optional[str] = None\n    type: Optional[UserType] = None\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\nclass User(UserBase):\n    id: str\n    created_at: datetime",
+        "peekOfCode": "class UserUpdate(BaseModel):\n    email: Optional[str] = None\n    first_name: Optional[str] = None\n    last_name: Optional[str] = None\n    type: Optional[UserType] = None\n    other_names: Optional[str] = None\n    phone: Optional[str] = None\nclass User(UserBase):\n    id: PyUUID\n    created_at: datetime",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2408,7 +2876,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class User(UserBase):\n    id: str\n    created_at: datetime\n    updated_at: datetime\nclass LoginRequest(BaseModel):\n    key: str\nclass AccessTokenRefreshRequest(BaseModel):\n    refresh_token: str",
+        "peekOfCode": "class User(UserBase):\n    id: PyUUID\n    created_at: datetime\n    updated_at: datetime\nclass LoginRequest(BaseModel):\n    email: EmailStr\n    key: str\nclass AccessTokenRefreshRequest(BaseModel):\n    refresh_token: str",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2417,7 +2885,7 @@
         "kind": 6,
         "importPath": "src.apps.users.schemas",
         "description": "src.apps.users.schemas",
-        "peekOfCode": "class LoginRequest(BaseModel):\n    key: str\nclass AccessTokenRefreshRequest(BaseModel):\n    refresh_token: str",
+        "peekOfCode": "class LoginRequest(BaseModel):\n    email: EmailStr\n    key: str\nclass AccessTokenRefreshRequest(BaseModel):\n    refresh_token: str",
         "detail": "src.apps.users.schemas",
         "documentation": {}
     },
@@ -2476,15 +2944,6 @@
         "documentation": {}
     },
     {
-        "label": "pwd_context",
-        "kind": 5,
-        "importPath": "src.core.auth",
-        "description": "src.core.auth",
-        "peekOfCode": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\nclass TokenType(str, Enum):\n    ACCESS = \"access\"\n    REFRESH = \"refresh\"\nclass TokenPair(BaseModel):\n    access_token: str\n    refresh_token: str\n    token_type: Literal[\"bearer\"] = \"bearer\"\n    access_expires_in: int = Field(..., description=\"Access token expires in seconds\")\n    refresh_expires_in: int = Field(..., description=\"Refresh token expires in seconds\")",
-        "detail": "src.core.auth",
-        "documentation": {}
-    },
-    {
         "label": "Settings",
         "kind": 6,
         "importPath": "src.core.config",
@@ -2516,7 +2975,25 @@
         "kind": 6,
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
-        "peekOfCode": "class CurrentUser(BaseModel):\n    db_user: UserDB\n    payload: Dict[str, Any]\nasync def get_current_user(\n    credentials: HTTPAuthorizationCredentials = Depends(security),\n    db: AsyncSession = Depends(aget_db),\n) -> CurrentUser:\n    \"\"\"\n    Get the current user from the database.\n    Args:",
+        "peekOfCode": "class CurrentUser(BaseModel):\n    db_user: UserDB\n    payload: Dict[str, Any]\n    model_config = ConfigDict(from_attributes=True, arbitrary_types_allowed=True)\nasync def _get_current_user_any_token(\n    token_type: Literal[\"access\", \"refresh\"],\n    credentials: HTTPAuthorizationCredentials,\n    db: AsyncSession,\n) -> CurrentUser:\n    \"\"\"",
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_page_params",
+        "kind": 2,
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "peekOfCode": "def get_page_params(\n    page: int = 1,\n    size: int = 100,\n    sort_by: Literal[\"created_at\", \"updated_at\"] | str = \"created_at\",\n    sort_order: Literal[\"asc\", \"desc\"] = \"desc\",\n) -> PageParams:\n    \"\"\"\n    FastAPI dependency for pagination parameters.\n    Args:\n        page (int): The page number.",
+        "detail": "src.core.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "get_readings_page_params",
+        "kind": 2,
+        "importPath": "src.core.dependencies",
+        "description": "src.core.dependencies",
+        "peekOfCode": "def get_readings_page_params(\n    page: int = 1,\n    size: int = 100,\n    sort_by: Literal[\"created_at\", \"updated_at\"] | str = \"created_at\",\n    sort_order: Literal[\"asc\", \"desc\"] = \"desc\",\n) -> PageParams:\n    \"\"\"\n    FastAPI dependency for pagination parameters.\n    Args:\n        page (int): The page number.",
         "detail": "src.core.dependencies",
         "documentation": {}
     },
@@ -2525,7 +3002,7 @@
         "kind": 5,
         "importPath": "src.core.dependencies",
         "description": "src.core.dependencies",
-        "peekOfCode": "security = HTTPBearer()\nclass CurrentUser(BaseModel):\n    db_user: UserDB\n    payload: Dict[str, Any]\nasync def get_current_user(\n    credentials: HTTPAuthorizationCredentials = Depends(security),\n    db: AsyncSession = Depends(aget_db),\n) -> CurrentUser:\n    \"\"\"\n    Get the current user from the database.",
+        "peekOfCode": "security = HTTPBearer(\n    scheme_name=\"Bearer\",\n    description=\"JWT Authorization header using the Bearer scheme\",\n)\nclass CurrentUser(BaseModel):\n    db_user: UserDB\n    payload: Dict[str, Any]\n    model_config = ConfigDict(from_attributes=True, arbitrary_types_allowed=True)\nasync def _get_current_user_any_token(\n    token_type: Literal[\"access\", \"refresh\"],",
         "detail": "src.core.dependencies",
         "documentation": {}
     },
@@ -2624,7 +3101,7 @@
         "kind": 6,
         "importPath": "src.database.models",
         "description": "src.database.models",
-        "peekOfCode": "class TokenBlacklist(Base[TokenBlacklistSchema, TokenBlacklistSchema]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__token_blacklist\"\n    jti: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)\n    token_type: Mapped[Literal[\"access\", \"refresh\"]] = mapped_column(\n        String, nullable=False\n    )\n    user_id: Mapped[str] = mapped_column(String, nullable=False)\n    blacklisted_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now(timezone.utc)\n    )",
+        "peekOfCode": "class TokenBlacklist(Base[TokenBlacklistSchema, TokenBlacklistSchema]):\n    __tablename__ = f\"{settings.API_NAME.lower()}__token_blacklist\"\n    jti: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)\n    token_type: Mapped[Literal[\"access\", \"refresh\"]] = mapped_column(\n        String, nullable=False\n    )\n    user_id: Mapped[PyUUID] = mapped_column(PGUUID, nullable=False)\n    expires_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)",
         "detail": "src.database.models",
         "documentation": {}
     },
@@ -2633,7 +3110,7 @@
         "kind": 5,
         "importPath": "src.database.models",
         "description": "src.database.models",
-        "peekOfCode": "naming_convention = {\n    \"ix\": \"ix_%(column_0_label)s\",\n    \"uq\": \"uq_%(table_name)s_%(column_0_name)s\",\n    \"ck\": \"ck_%(table_name)s_%(constraint_name)s\",\n    \"fk\": \"fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s\",\n    \"pk\": \"pk_%(table_name)s\",\n}\nCreateSchemaType = TypeVar(\"CreateSchemaType\", bound=BaseModel)\nUpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):",
+        "peekOfCode": "naming_convention = {\n    \"ix\": \"ix_%(column_0_label)s\",\n    \"uq\": \"uq_%(table_name)s_%(column_0_name)s\",\n    \"ck\": \"ck_%(table_name)s_%(constraint_name)s\",\n    \"fk\": \"fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s\",\n    \"pk\": \"pk_%(table_name)s\",\n}\nCreateSchemaType = TypeVar(\"CreateSchemaType\", bound=BaseModel)\nUpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nSelectInloadT = str | Tuple[str, ...]",
         "detail": "src.database.models",
         "documentation": {}
     },
@@ -2642,7 +3119,7 @@
         "kind": 5,
         "importPath": "src.database.models",
         "description": "src.database.models",
-        "peekOfCode": "CreateSchemaType = TypeVar(\"CreateSchemaType\", bound=BaseModel)\nUpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):\n    metadata = MetaData(naming_convention=naming_convention)\n    id: Mapped[PyUUID] = mapped_column(PGUUID, primary_key=True, default=uuid4)\n    created_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now, nullable=False\n    )\n    updated_at: Mapped[datetime] = mapped_column(\n        DateTime,",
+        "peekOfCode": "CreateSchemaType = TypeVar(\"CreateSchemaType\", bound=BaseModel)\nUpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nSelectInloadT = str | Tuple[str, ...]\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):\n    metadata = MetaData(naming_convention=naming_convention)\n    id: Mapped[PyUUID] = mapped_column(PGUUID, primary_key=True, default=uuid4)\n    created_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now, nullable=False\n    )\n    updated_at: Mapped[datetime] = mapped_column(",
         "detail": "src.database.models",
         "documentation": {}
     },
@@ -2651,7 +3128,16 @@
         "kind": 5,
         "importPath": "src.database.models",
         "description": "src.database.models",
-        "peekOfCode": "UpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):\n    metadata = MetaData(naming_convention=naming_convention)\n    id: Mapped[PyUUID] = mapped_column(PGUUID, primary_key=True, default=uuid4)\n    created_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now, nullable=False\n    )\n    updated_at: Mapped[datetime] = mapped_column(\n        DateTime,\n        default=datetime.now,",
+        "peekOfCode": "UpdateSchemaType = TypeVar(\"UpdateSchemaType\", bound=BaseModel)\nSelectInloadT = str | Tuple[str, ...]\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):\n    metadata = MetaData(naming_convention=naming_convention)\n    id: Mapped[PyUUID] = mapped_column(PGUUID, primary_key=True, default=uuid4)\n    created_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now, nullable=False\n    )\n    updated_at: Mapped[datetime] = mapped_column(\n        DateTime,",
+        "detail": "src.database.models",
+        "documentation": {}
+    },
+    {
+        "label": "SelectInloadT",
+        "kind": 5,
+        "importPath": "src.database.models",
+        "description": "src.database.models",
+        "peekOfCode": "SelectInloadT = str | Tuple[str, ...]\nclass Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):\n    metadata = MetaData(naming_convention=naming_convention)\n    id: Mapped[PyUUID] = mapped_column(PGUUID, primary_key=True, default=uuid4)\n    created_at: Mapped[datetime] = mapped_column(\n        DateTime, default=datetime.now, nullable=False\n    )\n    updated_at: Mapped[datetime] = mapped_column(\n        DateTime,\n        default=datetime.now,",
         "detail": "src.database.models",
         "documentation": {}
     },
@@ -2669,7 +3155,7 @@
         "kind": 6,
         "importPath": "src.database.pagination",
         "description": "src.database.pagination",
-        "peekOfCode": "class PageParams:\n    def __init__(\n        self,\n        page: int = 1,\n        size: int = 100,\n        sort_by: Literal[\"created_at\", \"updated_at\"] | str = \"created_at\",\n        sort_order: Literal[\"asc\", \"desc\"] = \"desc\",\n    ):\n        if page < 1:\n            raise ValueError(\"Page number must be greater than 0\")",
+        "peekOfCode": "class PageParams:\n    def __init__(\n        self,\n        page: int = 1,\n        size: int = 100,\n        sort_by: Literal[\"created_at\", \"updated_at\"] | str = \"created_at\",\n        sort_order: Literal[\"asc\", \"desc\"] = \"desc\",\n    ):\n        self.page = page\n        self.size = size",
         "detail": "src.database.pagination",
         "documentation": {}
     },
@@ -2687,8 +3173,62 @@
         "kind": 6,
         "importPath": "src.database.schemas",
         "description": "src.database.schemas",
-        "peekOfCode": "class TokenBlacklist(BaseModel):\n    jti: str\n    token_type: str\n    user_id: PyUUID\n    blacklisted_at: datetime\n    expires_at: datetime",
+        "peekOfCode": "class TokenBlacklist(BaseModel):\n    jti: str\n    token_type: str\n    user_id: PyUUID\n    expires_at: datetime",
         "detail": "src.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserAuth",
+        "kind": 6,
+        "importPath": "tests.users.test_router",
+        "description": "tests.users.test_router",
+        "peekOfCode": "class TestUserAuth:\n    \"\"\"\n    Test class for user authentication functionality.\n    Tests cover:\n    - User registration (normal and admin users)\n    - Login with valid and invalid credentials\n    - Token-based authentication (access and refresh tokens)\n    - User profile retrieval\n    - Admin-only endpoint access control\n    - Token refresh mechanism",
+        "detail": "tests.users.test_router",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def client() -> Generator[TestClient, None, None]:\n    app.dependency_overrides[aget_db] = override_get_db\n    with TestClient(app) as c:\n        yield c\n@pytest.fixture\nasync def async_client() -> AsyncGenerator[AsyncClient, None]:\n    app.dependency_overrides[aget_db] = override_get_db\n    transport = ASGITransport(app=app)\n    async with AsyncClient(transport=transport, base_url=\"http://test\") as ac:\n        yield ac",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "TEST_DATABASE_URL",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "TEST_DATABASE_URL = \"sqlite+aiosqlite:///./test.db\"\nengine = create_async_engine(\n    TEST_DATABASE_URL,\n    connect_args={\"check_same_thread\": False},\n)\nTestingSessionLocal = async_sessionmaker(\n    autocommit=False,\n    autoflush=False,\n    bind=engine,\n    class_=AsyncSession,",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "engine = create_async_engine(\n    TEST_DATABASE_URL,\n    connect_args={\"check_same_thread\": False},\n)\nTestingSessionLocal = async_sessionmaker(\n    autocommit=False,\n    autoflush=False,\n    bind=engine,\n    class_=AsyncSession,\n)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "TestingSessionLocal",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "TestingSessionLocal = async_sessionmaker(\n    autocommit=False,\n    autoflush=False,\n    bind=engine,\n    class_=AsyncSession,\n)\nasync def override_get_db() -> AsyncGenerator[AsyncSession, None]:\n    async with TestingSessionLocal() as session:\n        yield session\n@pytest.fixture(scope=\"session\", autouse=True)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI(\n    title=\"Enerlytics\",\n    version=\"0.1.0\",\n    description=\"Electricity distribution analysis API.\",\n    lifespan=lifespan,\n)\n@app.get(\n    \"/\",\n    description=\"Root endpoint\",\n    status_code=status.HTTP_200_OK,",
+        "detail": "main",
         "documentation": {}
     }
 ]

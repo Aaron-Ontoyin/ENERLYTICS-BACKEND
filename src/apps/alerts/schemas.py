@@ -1,6 +1,8 @@
-from pydantic import BaseModel
 from enum import Enum
 from datetime import datetime
+from uuid import UUID as PyUUID
+
+from pydantic import BaseModel
 
 
 class AlertStatus(Enum):
@@ -27,6 +29,6 @@ class AlertUpdate(BaseModel):
 
 
 class Alert(AlertBase):
-    id: str
+    id: PyUUID
     created_at: datetime
     updated_at: datetime

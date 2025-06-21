@@ -1,4 +1,4 @@
-from .asession import aget_db
+from .asession import aget_db, asession_manager
 from .models import Base, Filter
 from .pagination import PageParams, PaginatedResponse, paginate_query
 
@@ -9,4 +9,5 @@ __all__ = [
     "PaginatedResponse",
     "paginate_query",
     "Filter",
+    "asession_manager",
 ]

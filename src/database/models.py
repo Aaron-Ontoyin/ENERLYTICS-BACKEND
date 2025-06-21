@@ -2,36 +2,29 @@
 This module provides the base model for all database models.
 """
 
-from datetime import datetime, timezone
-from typing import (
-    Any,
-    Dict,
-    Generic,
-    List,
-    Literal,
-    Optional,
-    Self,
-    TypeVar,
-)
+from datetime import datetime
+from collections.abc import Sequence
+from typing import Any, Dict, Literal, Generic, List, Optional, Self, TypeVar, Tuple
 from uuid import UUID as PyUUID, uuid4
 
 from pydantic import BaseModel
-from sqlalchemy import (
-    DateTime,
-    MetaData,
-    Select,
-    inspect,
-    select,
-    String,
-)
+from sqlalchemy import DateTime, MetaData, Select
+from sqlalchemy import inspect, select, String, Column
+from sqlalchemy.exc import MissingGreenlet
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlalchemy.sql import or_
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
 )
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    mapped_column,
+    selectinload,
+)
 
 from src.core.config import settings
-from core.exceptions import NotFoundError
+from src.core.exceptions import NotFoundError
 from src.database.pagination import PageParams, PaginatedResponse, paginate_query
 from .schemas import TokenBlacklist as TokenBlacklistSchema
 
@@ -68,6 +61,7 @@ naming_convention = {
 
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
+SelectInloadT = str | Tuple[str, ...]
 
 
 class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
@@ -88,6 +82,8 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
         self,
         include: Optional[List[str]] = None,
         exclude: Optional[List[str]] = None,
+        at_props: bool = False,
+        include_relations: bool = False,
     ) -> Dict[str, Any]:
         if include is not None and exclude is not None:
             raise ValueError("Cannot specify both include and exclude")
@@ -105,6 +101,44 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
             if isinstance(value, datetime):
                 value = value.isoformat()
             result[column.name] = value
+
+        if include_relations:
+            for relation in self.__mapper__.relationships:
+                if exclude and relation.key in exclude:
+                    continue
+                if include and relation.key not in include:
+                    continue
+
+                try:
+                    value = getattr(self, relation.key)
+                    if isinstance(value, datetime):
+                        value = value.isoformat()
+                    result[relation.key] = value
+                except MissingGreenlet:
+                    raise ValueError(
+                        f"Relation {relation.key} not loaded. Please use selectinloads to load the relation."
+                    )
+
+        if at_props:
+            for attr_name in dir(self):
+                if not attr_name.startswith("_") and isinstance(
+                    getattr(type(self), attr_name, None), property
+                ):
+                    if exclude and attr_name in exclude:
+                        continue
+
+                    if include and attr_name not in include:
+                        continue
+
+                    try:
+                        value = getattr(self, attr_name)
+                        if isinstance(value, datetime):
+                            value = value.isoformat()
+                        result[attr_name] = value
+                    except MissingGreenlet:
+                        raise ValueError(
+                            f"Property {attr_name} not loaded. Please use selectinloads to load the property."
+                        )
 
         return result  # type: ignore
 
@@ -125,27 +159,68 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
         return [cls.from_dict(item) for item in data]
 
     @classmethod
-    async def create(cls, db: AsyncSession, obj_in: CreateSchemaType) -> Self:
-        obj = cls(**obj_in.model_dump())
+    def apply_selectinloads(
+        cls,
+        query: Select[Any],
+        selectinloads: Sequence[SelectInloadT],
+    ) -> Select[Any]:
+        for load in selectinloads:
+            if isinstance(load, str):
+                query = query.options(selectinload(getattr(cls, load)))
+            else:
+                current_attr = getattr(cls, load[0])
+                current_load = selectinload(current_attr)
+                for sil in load[1:]:
+                    current_attr = getattr(current_attr.property.mapper.class_, sil)
+                    current_load = current_load.selectinload(current_attr)
+                query = query.options(current_load)
+        return query
+
+    @classmethod
+    async def create(
+        cls,
+        db: AsyncSession,
+        obj_in: CreateSchemaType | Dict[str, Any],
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
+    ) -> Self:
+        if isinstance(obj_in, dict):
+            obj = cls(**obj_in)
+        else:
+            obj = cls(**obj_in.model_dump())
         db.add(obj)
         await db.commit()
         await db.refresh(obj)
-        return obj
+
+        return await cls.get_one(
+            db,
+            filters=[Filter(field="id", operator="==", value=obj.id)],
+            selectinloads=selectinloads,
+        )
 
     @classmethod
     async def bulk_create(
-        cls, db: AsyncSession, objs_in: List[CreateSchemaType]
-    ) -> List[Self]:
-        objs = [cls(**obj_in.model_dump()) for obj_in in objs_in]
+        cls, db: AsyncSession, objs_in: Sequence[CreateSchemaType | Dict[str, Any]]
+    ) -> None:
+        objs = map(
+            lambda x: cls(**x) if isinstance(x, dict) else cls(**x.model_dump()),
+            objs_in,
+        )
         db.add_all(objs)
         await db.commit()
-        return objs
+        return
 
     @classmethod
     async def get_by_id(
-        cls, db: AsyncSession, id: PyUUID, raise_: bool = False
+        cls,
+        db: AsyncSession,
+        id: PyUUID,
+        raise_: bool = False,
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
     ) -> Self | None:
         query = select(cls).where(cls.id == id)
+        if selectinloads:
+            query = cls.apply_selectinloads(query, selectinloads)
+
         result = await db.execute(query)
         res = result.scalars().first()
         if not res and raise_:
@@ -157,10 +232,16 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
         cls,
         db: AsyncSession,
         filters: List[Filter],
-        page_params: PageParams,
+        search_filters: Optional[List[Filter]] = None,
+        page_params: PageParams = PageParams(),
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
     ) -> PaginatedResponse["Base[CreateSchemaType, UpdateSchemaType]"]:
         query = select(cls)
         query = cls.apply_filter(query, filters)
+        if search_filters is not None:
+            query = cls.apply_filter(query, search_filters, as_or=True)
+        if selectinloads:
+            query = cls.apply_selectinloads(query, selectinloads)
         return await paginate_query(db, query, page_params)
 
     async def update(self, db: AsyncSession, obj_in: UpdateSchemaType) -> Self:
@@ -178,7 +259,11 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
 
     @classmethod
     async def get_or_create(
-        cls, db: AsyncSession, obj_in: CreateSchemaType, identifier: str | None = None
+        cls,
+        db: AsyncSession,
+        obj_in: CreateSchemaType,
+        identifier: str | None = None,
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
     ) -> Self:
         if not identifier:
             obj = await cls.get_by_id(db, getattr(obj_in, cls.pk_field()))
@@ -187,6 +272,8 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
                 stmt = select(cls).where(
                     getattr(cls, identifier) == getattr(obj_in, identifier)
                 )
+                if selectinloads:
+                    stmt = cls.apply_selectinloads(stmt, selectinloads)
                 result = await db.execute(stmt)
                 obj = result.scalars().first()
             except AttributeError:
@@ -198,7 +285,10 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
 
     @classmethod
     async def create_with_user(
-        cls, db: AsyncSession, obj_in: CreateSchemaType, user_id: str
+        cls,
+        db: AsyncSession,
+        obj_in: CreateSchemaType,
+        user_id: str,
     ) -> Self:
         obj = cls(**obj_in.model_dump())
         if hasattr(obj, "user_id"):
@@ -210,55 +300,81 @@ class Base(DeclarativeBase, Generic[CreateSchemaType, UpdateSchemaType]):
 
     @classmethod
     async def get_one_or_none(
-        cls, db: AsyncSession, filters: List[Filter] | Filter
+        cls,
+        db: AsyncSession,
+        filters: List[Filter] | Filter,
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
     ) -> Self | None:
         filters = filters if isinstance(filters, list) else [filters]
         query = select(cls)
         query = cls.apply_filter(query, filters)
+        if selectinloads:
+            query = cls.apply_selectinloads(query, selectinloads)
         result = await db.execute(query)
         return result.scalars().first()
 
     @classmethod
-    async def get_one(cls, db: AsyncSession, filters: List[Filter] | Filter) -> Self:
-        res = await cls.get_one_or_none(db, filters)
+    async def get_one(
+        cls,
+        db: AsyncSession,
+        filters: List[Filter] | Filter,
+        selectinloads: Optional[Sequence[SelectInloadT]] = None,
+    ) -> Self:
+        res = await cls.get_one_or_none(db, filters, selectinloads)
         if not res:
             raise NotFoundError(f"{cls.__name__} with filters {filters} not found")
         return res
 
     @classmethod
-    def apply_filter(cls, query: Select[Any], filters: List[Filter]) -> Select[Any]:
+    def apply_filter(
+        cls,
+        query: Select[Any],
+        filters: List[Filter],
+        as_or: bool = False,
+    ) -> Select[Any]:
+        if not filters:
+            return query
+
+        conditions: List[Any] = []
+
         for filter in filters:
-            field = getattr(cls, filter.field)
+            field: Column[Any] = getattr(cls, filter.field)
             if filter.operator == "==":
-                query = query.where(field == filter.value)
+                conditions.append(field == filter.value)
             elif filter.operator == "!=":
-                query = query.where(field != filter.value)
+                conditions.append(field != filter.value)
             elif filter.operator == ">":
-                query = query.where(field > filter.value)
+                conditions.append(field > filter.value)
             elif filter.operator == ">=":
-                query = query.where(field >= filter.value)
+                conditions.append(field >= filter.value)
             elif filter.operator == "<":
-                query = query.where(field < filter.value)
+                conditions.append(field < filter.value)
             elif filter.operator == "<=":
-                query = query.where(field <= filter.value)
+                conditions.append(field <= filter.value)
             elif filter.operator == "in":
-                query = query.where(field.in_(filter.value))
+                conditions.append(field.in_(filter.value))
             elif filter.operator == "not in":
-                query = query.where(~field.in_(filter.value))
+                conditions.append(~field.in_(filter.value))
             elif filter.operator == "is":
-                query = query.where(field.is_(filter.value))
+                conditions.append(field.is_(filter.value))
             elif filter.operator == "is not":
-                query = query.where(field.is_not(filter.value))
+                conditions.append(field.is_not(filter.value))
             elif filter.operator == "like":
-                query = query.where(field.like(filter.value))
+                conditions.append(field.like(filter.value))
             elif filter.operator == "ilike":
-                query = query.where(field.ilike(filter.value))
+                conditions.append(field.ilike(filter.value))
             elif filter.operator == "between":
-                query = query.where(field.between(filter.value[0], filter.value[1]))
+                conditions.append(field.between(filter.value[0], filter.value[1]))
             elif filter.operator == "not between":
-                query = query.where(~field.between(filter.value[0], filter.value[1]))
+                conditions.append(~field.between(filter.value[0], filter.value[1]))
             else:
                 raise ValueError(f"Invalid operator: {filter.operator}")
+
+        if as_or:
+            query = query.where(or_(*conditions))
+        else:
+            query = query.where(*conditions)
+
         return query
 
     def __repr__(self) -> str:
@@ -275,8 +391,5 @@ class TokenBlacklist(Base[TokenBlacklistSchema, TokenBlacklistSchema]):
     token_type: Mapped[Literal["access", "refresh"]] = mapped_column(
         String, nullable=False
     )
-    user_id: Mapped[str] = mapped_column(String, nullable=False)
-    blacklisted_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.now(timezone.utc)
-    )
+    user_id: Mapped[PyUUID] = mapped_column(PGUUID, nullable=False)
     expires_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)

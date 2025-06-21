@@ -2,14 +2,17 @@ from typing import List, Optional, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID as PyUUID
+from sqlalchemy.exc import IntegrityError
 
 from .models import Reading as ReadingDB
 from .schemas import Reading, ReadingCreate, ReadingUpdate, ReadingType
 from src.database import aget_db, PaginatedResponse, PageParams, Filter
 from src.core.dependencies import get_current_user, CurrentUser
+from src.core.dependencies import get_readings_page_params
 from src.core.query_parser import parse_filters
+from src.core.config import settings
 
-router = APIRouter(prefix="/readings", tags=["readings"])
+router = APIRouter(prefix="/readings", tags=["Readings"])
 
 
 def get_unit_for_type(reading_type: ReadingType) -> Optional[str]:
@@ -25,20 +28,9 @@ def get_unit_for_type(reading_type: ReadingType) -> Optional[str]:
     return unit_map.get(reading_type)
 
 
-@router.post("/", response_model=Reading)
-async def create_reading(
-    reading_create: ReadingCreate,
-    db: AsyncSession = Depends(aget_db),
-    current_user: CurrentUser = Depends(get_current_user),
-):
-    """Create a single reading"""
-    reading = await ReadingDB.create(db, reading_create)
-    return reading
-
-
-@router.post("/bulk", response_model=Dict[str, Any])
-async def bulk_create_readings(
-    readings_create: List[ReadingCreate],
+@router.post("/", response_model=Dict[str, Any])
+async def create_readings(
+    readings: List[ReadingCreate],
     db: AsyncSession = Depends(aget_db),
     current_user: CurrentUser = Depends(get_current_user),
 ):
@@ -46,51 +38,32 @@ async def bulk_create_readings(
     Bulk create readings (up to 500 at once for optimal performance).
     Returns summary statistics instead of all created objects.
     """
-    if len(readings_create) > 500:
+    if len(readings) > settings.READINGS_BULK_CREATE_LIMIT:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Maximum 500 readings allowed per bulk request",
+            detail=f"Maximum {settings.READINGS_BULK_CREATE_LIMIT} readings allowed per bulk request",
         )
 
-    if not readings_create:
+    if not readings:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="At least one reading is required",
         )
 
-    readings = await ReadingDB.bulk_create(db, readings_create)
-
-    reading_types: dict[ReadingType, int] = {}
-    sources: dict[str, set[str]] = {"meters": set(), "transformers": set()}
-
-    for reading in readings:
-        reading_types[reading.reading_type] = (
-            reading_types.get(reading.reading_type, 0) + 1
+    try:
+        await ReadingDB.bulk_create(db, readings)
+    except IntegrityError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid reading data!",
         )
-        if reading.meter_id:
-            sources["meters"].add(str(reading.meter_id))
-        if reading.transformer_id:
-            sources["transformers"].add(str(reading.transformer_id))
-
-    return {
-        "message": f"Successfully created {len(readings)} readings",
-        "total_created": len(readings),
-        "reading_types": reading_types,
-        "sources_affected": {
-            "meters": len(sources["meters"]),
-            "transformers": len(sources["transformers"]),
-        },
-        "time_range": {
-            "earliest": min(r.timestamp for r in readings).isoformat(),
-            "latest": max(r.timestamp for r in readings).isoformat(),
-        },
-    }
+    return {"message": "success"}
 
 
 @router.get("/", response_model=PaginatedResponse[Reading])
 async def get_readings(
     request: Request,
-    page_params: PageParams = Depends(),
+    page_params: PageParams = Depends(get_readings_page_params),
     db: AsyncSession = Depends(aget_db),
     current_user: CurrentUser = Depends(get_current_user),
 ):
@@ -122,10 +95,8 @@ async def get_readings(
     ]
 
     filters: List[Filter] = parse_filters(query_params, allowed_fields)
-    readings = await ReadingDB.list(db, filters, page_params)
-    return PaginatedResponse[Reading](
-        items=[Reading.model_validate(reading) for reading in readings.items],
-        **readings.model_dump(exclude={"items"}),
+    return await ReadingDB.list(
+        db, filters, search_filters=None, page_params=page_params
     )
 
 
@@ -136,10 +107,10 @@ async def update_readings(
     current_user: CurrentUser = Depends(get_current_user),
 ):
     """Update multiple readings"""
-    if len(reading_updates) > 500:
+    if len(reading_updates) > settings.READINGS_BULK_CREATE_LIMIT:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Maximum 500 readings allowed per bulk request",
+            detail=f"Maximum {settings.READINGS_BULK_CREATE_LIMIT} readings allowed per bulk request",
         )
 
     in_ids = [reading.id for reading in reading_updates]
@@ -147,7 +118,7 @@ async def update_readings(
         await ReadingDB.list(
             db,
             filters=[Filter(field="id", operator="in", value=in_ids)],
-            page_params=PageParams(size=len(reading_updates)),
+            page_params=get_readings_page_params(size=len(reading_updates)),
         )
     ).items
     if len(readings) != len(reading_updates):
@@ -181,11 +152,17 @@ async def delete_readings(
     current_user: CurrentUser = Depends(get_current_user),
 ):
     """Delete multiple readings"""
+    if len(reading_ids) > settings.READINGS_BULK_CREATE_LIMIT:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Maximum {settings.READINGS_BULK_CREATE_LIMIT} readings allowed per bulk request",
+        )
+
     readings = (
         await ReadingDB.list(
             db,
             filters=[Filter(field="id", operator="in", value=reading_ids)],
-            page_params=PageParams(size=len(reading_ids)),
+            page_params=get_readings_page_params(size=len(reading_ids)),
         )
     ).items
     for reading in readings:

@@ -3,7 +3,7 @@ from typing import List, Optional
 from uuid import UUID as PyUUID
 from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class TransformerBase(BaseModel):
@@ -27,8 +27,7 @@ class Transformer(TransformerBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class MeterBase(BaseModel):
@@ -37,7 +36,7 @@ class MeterBase(BaseModel):
 
 
 class MeterCreate(MeterBase):
-    coverage_area_id: PyUUID
+    transformer_id: PyUUID
 
 
 class Meter(MeterBase):
@@ -45,8 +44,7 @@ class Meter(MeterBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class MeterUpdate(BaseModel):
@@ -67,8 +65,6 @@ class CoverageAreaBase(BaseModel):
     type: CoverageAreaType
     name: str
     description: str
-    num_transformers: int
-    num_meters: int
 
 
 class CoverageAreaCreate(CoverageAreaBase):
@@ -80,45 +76,29 @@ class CoverageAreaUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     parent_id: Optional[PyUUID] = None
-    num_transformers: Optional[int] = None
-    num_meters: Optional[int] = None
 
 
-class CoverageArea(CoverageAreaBase):
+class CoverageAreaOut(CoverageAreaBase):
+    num_transformers: int
+    num_meters: int
+
+
+class CoverageArea(CoverageAreaOut):
     id: PyUUID
     parent_id: Optional[PyUUID] = None
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
-class CoverageAreaWithSubAreas(CoverageAreaBase):
+class CoverageAreaWithSubAreas(CoverageAreaOut):
     """Coverage area with nested sub-areas"""
 
     id: PyUUID
     parent_id: Optional[PyUUID] = None
-    sub_areas: List["CoverageAreaWithSubAreas"] = []
+    sub_areas: List[CoverageArea] = []
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
-
-
-class CoverageAreaWithParent(CoverageAreaBase):
-    """Coverage area with parent information"""
-
-    id: PyUUID
-    parent_id: Optional[PyUUID] = None
-    parent_area: Optional["CoverageArea"] = None
-    created_at: datetime
-    updated_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-CoverageAreaWithSubAreas.model_rebuild()
-CoverageAreaWithParent.model_rebuild()
+    model_config = ConfigDict(from_attributes=True)

@@ -27,6 +27,11 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_HOURS: int = 24
     REFRESH_TOKEN_EXPIRE_HOURS: int = 24 * 7
 
+    BULK_CREATE_LIMIT: int = 100
+    READINGS_BULK_CREATE_LIMIT: int = 500
+    MAX_PAGE_SIZE: int = 100
+    READINGS_MAX_PAGE_SIZE: int = 500
+
     model_config = SettingsConfigDict(
         case_sensitive=False,
         env_file=".env",

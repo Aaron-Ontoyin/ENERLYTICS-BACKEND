@@ -29,11 +29,6 @@ class PageParams:
         sort_by: Literal["created_at", "updated_at"] | str = "created_at",
         sort_order: Literal["asc", "desc"] = "desc",
     ):
-        if page < 1:
-            raise ValueError("Page number must be greater than 0")
-        if size < 1 or size > 100:
-            raise ValueError("Page size must be between 1 and 100")
-
         self.page = page
         self.size = size
         self.offset = (page - 1) * size
@@ -45,7 +40,7 @@ async def paginate_query(
     db: AsyncSession,
     query: Select[Any],
     page_params: PageParams,
-) -> PaginatedResponse[Base[Any, Any]]:
+) -> PaginatedResponse["Base[Any, Any]"]:
     count_query: Select[Any] = select(func.count()).select_from(query.subquery())
     total: int = (await db.execute(count_query)).scalar() or 0
     total_pages: int = max((total + page_params.size - 1) // page_params.size, 1)
@@ -54,7 +49,7 @@ async def paginate_query(
     query = query.offset(page_params.offset).limit(page_params.size)
 
     items: List[Any] = list((await db.execute(query)).scalars().all())
-    return PaginatedResponse[Base[Any, Any]](
+    return PaginatedResponse[Any](
         items=items,
         total=total,
         page=page_params.page,
